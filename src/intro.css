@@ -1,0 +1,191 @@
+.Intro{
+    display: grid;
+    grid-template-columns: [first] 25% [second] auto [third] 25% [last];
+    grid-template-rows: [row0] 30% [row1] 50% [row2] auto [rowLast];
+    padding-top: 80px;
+    padding-left: 0px;
+    padding-right: 0px;
+    background-color: #ff9100;
+}
+
+
+
+.section-left
+{
+    margin-top: 100px;
+    grid-column-start: first;
+    grid-column-end: second;
+    grid-row-start: row0;
+    grid-row-end: rowLast;
+    
+}
+
+.section-right
+{
+    margin-top: 100px;
+    grid-column-start: third;
+    grid-column-end: last;
+    grid-row-start: row0;
+    grid-row-end: rowLast;
+    
+}
+
+.section-center
+{  
+    grid-column-start: second;
+    grid-column-end: third;
+    grid-row-start: row0;
+    grid-row-end: row2;
+    padding:1px;
+
+}
+
+.section-low
+{
+    grid-column-start: second;
+    grid-column-end: third;
+    grid-row-start: row2;
+    grid-row-end: rowLast;
+    padding: 10px;
+}
+
+.content
+{
+    margin-bottom:110px;
+    margin-top:110px;
+    margin-left: 30px;
+    margin-right: 30px;
+
+}
+
+.content-low
+{
+    margin: 10px;
+}
+
+.center-content
+{
+    border: 0px solid black;
+    font-size: 60px;
+    padding: 40px;
+    font-family: 'verdana';
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+    color: #05386b;
+    background: linear-gradient(to left,rgb(0, 255, 255),rgb(255, 162, 41) 100%);
+    
+
+}
+
+.content-left
+{
+    border: 0px solid black;
+    font-size: 35px;
+    padding: 10px;
+    color: rgb(57, 66, 75);
+    font-family: 'verdana';
+    border-top-right-radius: 70px;
+    border-bottom-right-radius: 70px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+    
+}
+
+.content-right
+{
+    border: 0px solid black;
+    font-size: 35px;
+    padding: 10px;
+    font-family: 'verdana';
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+    color: white;
+    border-top-left-radius: 70px;
+    border-bottom-left-radius: 70px;
+}
+
+.content-low
+{
+    border: 0px solid black;
+    background: linear-gradient(to right, #ffffff, #53ffa0);
+    font-size: 15px;
+    padding: 5px;
+    font-family: 'verdana';
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+    border-bottom-left-radius: 150px;
+    border-bottom-right-radius: 150px;
+}
+
+
+
+
+[data-bg~='oddbird'] {
+    --bg-color: hsl(195, 52%, 31%);
+    --bg-tint: #ff0e0e;
+    --bg-shade: #00ff37;
+    
+  }
+  
+  
+  * {
+    /* Setting a valid hue (any unitless number) will auto-set all the other values */
+    --bg-hue: unset;
+    
+    /* Adjust the base saturation and lightness as desired */
+    --bg-saturation: 50%;
+    --bg-lightness: 40%;
+    
+    /* set angles for the tint and shade gradients */
+    --bg-tint-angle: -20deg;
+    --bg-shade-angle: -110deg;
+  
+    /* set amounts for default tint & shade */
+    --bg-tint-amount: 20%;
+    --bg-shade-amount: 20%;
+    
+    /* set indiviidual hues for the tint and shade */
+    /* defaults are set by higher-level arguments…
+       which alows for both simpler & more customized uses*/
+    --bg-tint-hue: var(--bg-hue);
+    --bg-shade-hue: var(--bg-hue);
+    
+    /* set the gradient positions all at once */
+    --bg-gradient-stops: 30%;
+    
+    /* override tint/shade gradients directly */
+    --bg-tint-start: var(--bg-gradient-stops);
+    --bg-tint-end: var(--bg-tint-start);
+    --bg-shade-start: var(--bg-gradient-stops);
+    --bg-shade-end: var(--bg-shade-start);
+  
+    /* override tint/shade saturation & lightness directly */
+    --bg-tint-saturation: var(--bg-saturation);
+    --bg-tint-lightness: calc(var(--bg-lightness) + var(--bg-tint-amount));
+    --bg-shade-saturation: var(--bg-saturation);
+    --bg-shade-lightness: calc(var(--bg-lightness) - var(--bg-shade-amount));
+  
+    /* or override any individual color directly */
+    --bg-color: hsl(var(--bg-hue), var(--bg-saturation), var(--bg-lightness));
+    --bg-tint: hsla(var(--bg-tint-hue), var(--bg-tint-saturation), var(--bg-tint-lightness), 0.25);
+    --bg-shade: hsla(var(--bg-shade-hue), var(--bg-shade-saturation), var(--bg-shade-lightness), 0.25);
+  
+    
+    /* this is the internal logic that creates your angled tint/shade background */
+    --bg-image: 
+      linear-gradient(
+        var(--bg-tint-angle),
+        var(--bg-tint) var(--bg-tint-start),
+        transparent var(--bg-tint-end)
+      ),
+      linear-gradient(
+        var(--bg-shade-angle),
+        var(--bg-shade) var(--bg-shade-start),
+        transparent var(--bg-shade-end)
+      )
+    ;
+    
+    /* Creating a final "output" variable acts like a function return */
+    --bg: var(--bg-image) var(--bg-color);
+    
+    /* Applying that value to a property creates a mixin */
+    /* Since the initial return is invalid, nothing happens unless we set a --bg-hue */
+    background: var(--bg);
+  }
+  
